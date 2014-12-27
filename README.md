@@ -1,7 +1,9 @@
-spyfall
+Spyfall
 =======
 
-another implementation of the game
+Another implementation of the game. The focus was on making a mobile accessible version.
+
+Try it out : [http://lilplaytime.com/spyfall/](http://lilplaytime.com/spyfall/)
 
 This project grew out wanting to experiment with new technologies. 
 jQuery mobile, mocha, chai, testem, etc.
@@ -12,8 +14,20 @@ I may experiment and try converting the modules to Singleton globals, but for no
 
 page uses a CDN reference, meaning no need to install the dependencies unless it's for development.
 
-Uses a player weighting system so the player picked as the spy is evenly distributed.
+key features
+-------------
+-   Player weighting system so the player picked as the spy is evenly distributed.
+-   Timer
 
-for testing
+for Development & testing
 -----------
-npm install (will install jquery, mocha, chai, sinon, testem)
+npm install 
+
+(will install jquery, mocha, chai, sinon, testem)
+
+Wishlist
+---------
+-   Customizable player names
+-   Settings editor for default timer and player weight difference value
+-   handle reset of weight system when enough plays occur and weighting values are too low
+
