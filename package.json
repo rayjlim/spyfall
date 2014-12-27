@@ -1,0 +1,21 @@
+{
+  "name": "Spyfall.Mobile",
+  "version": "0.0.1",
+  "description": "A reimplementation of the board game.",
+  "main": "./lib/SpyController.js",
+  "scripts": {
+    "test": "./node_modules/.bin/testem"
+  },
+  "author": {
+    "name": "Raymond Lim"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.15.1",
+    "chai": "~1.8.1",
+    "sinon": "~1.7.3",
+    "testem": "~0.5.12",
+    "jquery": "*",
+    "jquery-mobile": "latest"
+  }
+}
