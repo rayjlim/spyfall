@@ -10,7 +10,7 @@ describe("SpyGame", function() {
         'cPlayer': '1'
       };
       testGame.setRound(newround);
-      expect(testGame.getPlayerRole()).to.equal('Spy');
+      expect(testGame.getPlayerRole()).to.equal('You\'re the Spy');
     });
     it("returns location  for non-spy", function() {
 
