@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
 	<style>
-	.label-inline {float:left;}
+	.label-inline {float:left; margin-right: 10px; font-size: 1.25em;}
 	#locationVal{font-size: 2.0em;}
 	#passToPlayer{font-size: 2.0em;}
-	.currentPlayer{font-size: 2em;}
 	.currentRound{font-size: 2em;}
 	#countdown{font-size:5.5em;}
 	.center-button{
@@ -38,7 +37,8 @@
 		<button data-role="button" id="setupBtn">Play</button>
 	</div>
 	<div data-role="content" data-theme="a">
-		<h2 class="label-inline" style="margin-right: 10px">Players</h2>
+		<span>Choose number of players and press Play</span>
+		<h2 class="label-inline">Players</h2>
 		<select name="playerCount" id="playerCountOption" class="label-inline">
 			<option value="4">4</option>
 			<option value="5" selected>5</option>
@@ -46,8 +46,6 @@
 			<option value="7">7</option>
 			<option value="8">8</option>
 		</select>
-
-		<button class="audiotest" data-role="button">test Audio</button>
 	</div>
 	<div data-role="footer">
 		<button class="restartBtn ui-state-disabled" data-role="button" data-inline="true" data-icon="home" data-iconpos="notext">Home</button>
@@ -73,11 +71,8 @@
 	</div>
 
 	<div data-role="content" >
-		<button data-role="button" id="passBtn">Ready</button>
-		<p class="center-wrapper">
-			<span>Pass to Player: </span>
-			<span class="currentPlayer" id="passToPlayer"></span>
-		</p>
+		<p class="center-wrapper">Pass to <span class="currentPlayer"></span></p>	
+		<button data-role="button" id="passBtn" data-icon="arrow-r" data-iconpos="right">I am <span class="currentPlayer" id="passToPlayer"></span></button>
 		<p class="center-wrapper">Round: <span class="currentRound"></span></p>
 	</div>	
 	<div data-role="footer">
@@ -92,10 +87,12 @@
 		 <h1>Clue</h1>
 	</div>
 	<div data-role="content">
-	<button data-role="button" data-icon="star" data-direction="reverse" id="clueContinueBtn">Continue</button>
+		
+	<button data-role="button" data-icon="arrow-r" data-iconpos="right" id="clueContinueBtn">Continue</button>
 		<p class="center-wrapper">Location: 
 			<span id="locationVal" ></span>
 		</p>
+		<p class="center-wrapper">Now you know the location. When finished, press Continue </p>
 		<p class="center-wrapper">Round: <span class="currentRound"></span>, Player: <span class="currentPlayer" >1</span>
 		</p>
 	</div>
@@ -118,23 +115,27 @@
 		</div>
 		
 		<div class="center-wrapper">
-		<span id="countdown"></span>
+		<span id="countdown">0:00</span>
+		<p>Use the buttons below to begin timer</p>
 		<p>
 		<button id="runTimerBtn" data-role="button" data-inline="true">Start/Stop</button>
 		<button id="resetTimerBtn" data-role="button" data-inline="true" data-icon="refresh">Reset</button>
-		</p>
+		</p>		
+		<br>
 		<p>
-		<button href="#" id="addTimerBtn" data-role="button" data-inline="true" data-icon="plus">1 minute</button>
-		<button href="#" id="subTimerBtn" data-role="button" data-inline="true" data-icon="minus">1 minute</button>
+		<button href="#" id="addTimerBtn" data-role="button" data-inline="true" data-icon="plus"  data-iconpos="notext">+1 minute</button>
+		<span>Minute</span>
+		<button href="#" id="subTimerBtn" data-role="button" data-inline="true" data-icon="minus"  data-iconpos="notext">-1 minute</button>
 		<br><br>
 		<button class="restartRoundBtn" data-role="button" >Restart this Round</button>
-		<button class="roundSummary" data-role="button" >Summary</button>
-		<button class="audiotest" data-role="button">test Audio</button>
+		<button class="roundSummary" data-role="button"  data-inline="true">Summary</button>
+		<button class="audiotest" data-role="button"  data-inline="true" data-icon="audio">test Audio</button>
 		</p>
 		</div>
 	</div>
 	<div data-role="footer">
 		<button class="restartBtn" data-role="button" data-inline="true" data-icon="home" data-iconpos="notext">Home</button>
+
 		<!--button class="settingsBtn ui-btn-right" data-icon="gear" data-iconpos="notext">Settings</button-->
 	</div>
 </div><!-- /page four -->
