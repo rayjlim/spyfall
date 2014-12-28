@@ -29,6 +29,12 @@ npm install
 
 run testem on commandline
 
+for Reporting
+-----------
+npm install -g plato
+
+plato -r -l .jshintrc -d report lib
+
 Future feature wishlist
 ---------
 -   Customizable player names
