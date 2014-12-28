@@ -28,6 +28,7 @@ npm install
 Wishlist
 ---------
 -   Customizable player names
+-   Customizable locations
 -   Settings editor for default timer and player weight difference value
 -   handle reset of weight system when enough plays occur and weighting values are too low
 

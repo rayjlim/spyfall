@@ -15,7 +15,6 @@
     "chai": "~1.8.1",
     "sinon": "~1.7.3",
     "testem": "~0.5.12",
-    "jquery": "*",
-    "jquery-mobile": "latest"
+    "jquery": "1.11.2"
   }
 }
