@@ -116,9 +116,8 @@
 		
 		<div class="center-wrapper">
 		<span id="countdown">08:00</span>
-		<p>Use the buttons below to begin timer</p>
 		<p>
-		<button id="runTimerBtn" data-role="button" data-inline="true">Start/Stop</button>
+		<button id="runTimerBtn" data-role="button" data-inline="true">Start/Stop Timer</button>
 		<button id="resetTimerBtn" data-role="button" data-inline="true" data-icon="refresh">Reset</button>
 		</p>		
 		<br>
@@ -207,19 +206,13 @@ $('.roundSummary').on('click',       controller.roundSummary);
 // $('.settingsBtn').on('click', SpyfallController.showSettings);
 // $('#saveSettingsBtn').on('click', SpyfallController.saveSettings);
 
-$('.audiotest').on('click',function(){
-	document.getElementById('audiotag1').play();
-});
-
 var timer = new Countdown.Timer('countdown', 'audiotag1');
 $('#runTimerBtn').on('click', timer.Start);
 $('#resetTimerBtn').on('click', timer.Reset);
 $('#addTimerBtn').on('click', timer.addOne);
 $('#subTimerBtn').on('click', timer.subOne);
-$('#gamePlay').bind('pageinit', function() {
-    $('#startTimerBtn').button().button('enable');
-	$('#stopTimerBtn').button().button('disable');
-});
+$('.audiotest').on('click', timer.playAudio);
+
 $(document).bind('pageinit', controller.pageCheck);
 
 </script>
