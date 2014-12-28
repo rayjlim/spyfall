@@ -18,6 +18,8 @@ key features
 -------------
 -   Player weighting system so the player picked as the spy is evenly distributed.
 -   Timer
+-   Restart display of round
+-   Round Summary page
 
 for Development & testing
 -----------
@@ -25,10 +27,16 @@ npm install
 
 (will install jquery, mocha, chai, sinon, testem)
 
-Wishlist
+run testem on commandline
+
+Future feature wishlist
 ---------
 -   Customizable player names
 -   Customizable locations
 -   Settings editor for default timer and player weight difference value
--   handle reset of weight system when enough plays occur and weighting values are too low
+-   Handle reset of weight system when enough plays occur and weighting values are too low
+-   Add JSdoc comments
+-   Use pub/sub for timer, Change Timer to publish count changes/Controller to sub to timer events
+-   Include Roles
+-   Int'l translations
 
