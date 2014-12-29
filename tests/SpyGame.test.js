@@ -4,7 +4,7 @@ describe("SpyGame", function() {
   describe("getPlayerRole", function() {
     it("return spy for spy", function() {
 
-      var testGame = new Spy.Game();
+      var testGame = spy.Game();
       testGame.round = {
         'spy': 1,
         'cPlayer': 1
@@ -13,7 +13,7 @@ describe("SpyGame", function() {
     });
     it("returns location  for non-spy", function() {
 
-      var testGame = new Spy.Game();
+      var testGame = spy.Game();
       testGame.round = {
         'spy': 1,
         'cPlayer': 2,
@@ -26,7 +26,7 @@ describe("SpyGame", function() {
   describe("generateRound", function() {
     it("should set the basics", function() {
 
-      var testGame = new Spy.Game();
+      var testGame = spy.Game();
       testGame.round = {
         'number': 2,
         'spy': 1,
@@ -42,7 +42,7 @@ describe("SpyGame", function() {
   describe("getBasicInfo", function() {
     it("should return object of basics", function() {
 
-      var testGame = new Spy.Game();
+      var testGame = spy.Game();
       testGame.round = {
         'number': 2,
         'spy': 1,

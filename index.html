@@ -189,8 +189,8 @@
 <script src="lib/Timer.js"></script>
     
 <script>
-var game = new Spy.Game();
-var controller = new lpt.SpyController(game);
+var game = spy.Game();
+var controller = lpt.SpyController(game);
 
 $('.restartBtn').on('click',   controller.showStart);
 $('#setupBtn').on('click',     controller.setupGame);
@@ -206,9 +206,9 @@ $('.roundSummary').on('click',       controller.roundSummary);
 // $('.settingsBtn').on('click', SpyfallController.showSettings);
 // $('#saveSettingsBtn').on('click', SpyfallController.saveSettings);
 
-var timer = new Countdown.Timer('countdown', 'audiotag1');
-$('#runTimerBtn').on('click', timer.Start);
-$('#resetTimerBtn').on('click', timer.Reset);
+var timer = countdown.Timer('countdown', 'audiotag1');
+$('#runTimerBtn').on('click', timer.run);
+$('#resetTimerBtn').on('click', timer.reset);
 $('#addTimerBtn').on('click', timer.addOne);
 $('#subTimerBtn').on('click', timer.subOne);
 $('.audiotest').on('click', timer.playAudio);
