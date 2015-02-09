@@ -45,4 +45,4 @@ Future feature wishlist
 -   Use pub/sub for timer, Change Timer to publish count changes/Controller to sub to timer events
 -   Include Roles
 -   Int'l translations
-
+-   Adjust CSS for clue string length
