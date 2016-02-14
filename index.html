@@ -1,218 +1,353 @@
 <!doctype html>
 <html>
-<head>
-    <title>Spyfall</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="themes/lpt.min.css" />
-<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
-<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
-	<style>
-	.label-inline {float:left; margin-right: 10px; font-size: 1.25em;}
-	#locationVal{font-size: 2.0em;}
-	#passToPlayer{font-size: 2.0em;}
-	.currentRound{font-size: 2em;}
-	#countdown{font-size:5.5em;}
-	.center-button{
-		margin: 0 auto;
-		}
-			.center-wrapper{
-		text-align: center;
-		}
-		.center-wrapper * {
-		margin: 0 auto;
-		}
-		.settingsBtn {margin: 0.4em; float: right}
-		.footnote{font-size: 0.7em; font-weight: normal;}
-	</style>
-</head>
-<body>
-
-<div data-role="page" id="setup">
-
-	<div data-role="header">
-		<h1>Spyfall</h1>
-		
-	</div>
-	<div data-role="content"  data-theme="b">
-		<button data-role="button" id="setupBtn">Play</button>
-	</div>
-	<div data-role="content" data-theme="a">
-		<span>Choose number of players and press Play</span>
-		<h2 class="label-inline">Players</h2>
-		<select name="playerCount" id="playerCountOption" class="label-inline">
-			<option value="4">4</option>
-			<option value="5" selected>5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-		</select>
-	</div>
-	<div data-role="footer">
-		<button class="restartBtn ui-state-disabled" data-role="button" data-inline="true" data-icon="home" data-iconpos="notext">Home</button>
-		<button class="gamePlayBtn">Timer</button>
-		<button class="locationsBtn ui-btn-right">Locations</button>
-		<!--button class="settingsBtn ui-btn-right" data-icon="gear" data-iconpos="notext">Settings</button-->
-		<br><br>
-		<span class="footnote">
-		 <a href="http://international.hobbyworld.ru/catalog/25-spyfall/">Spyfall</a> is designed by Alexandr Ushan <br> 
-		 Published by <a href="http://international.hobbyworld.ru/">Hobby World</a><br>
-		 Source code at <a href="https://github.com/rayjlim/spyfall">https://github.com/rayjlim/spyfall</a>
-
-		</span>
-		
-		<audio id="audiotag1" src="sounds/Ship_Bell.mp3" preload="auto"></audio>
-	</div>
-</div><!-- /page one -->
-
-<div data-role="page" id="pass" data-theme="b">
-
-	<div data-role="header">
-		<h1><span class="playerCount"></span> Players</h1>
-	</div>
-
-	<div data-role="content" >
-		<p class="center-wrapper">Pass to <span class="currentPlayer"></span></p>	
-		<button data-role="button" id="passBtn" data-icon="arrow-r" data-iconpos="right">I am <span class="currentPlayer" id="passToPlayer"></span></button>
-		<p class="center-wrapper">Round: <span class="currentRound"></span></p>
-	</div>	
-	<div data-role="footer">
-		<button class="restartBtn" data-role="button" data-inline="true" data-icon="home" data-iconpos="notext">Home</button>
-		
-		<button class="gamePlayBtn ui-btn-right">Timer</button>
-	</div>
-</div><!-- /page two -->
-
-<div data-role="page" id="clue" data-theme="b">
-	<div data-role="header">
-		 <h1>Clue</h1>
-	</div>
-	<div data-role="content">
-		
-	<button data-role="button" data-icon="arrow-r" data-iconpos="right" id="clueContinueBtn">Continue</button>
-		<p class="center-wrapper">Location: 
-			<span id="locationVal" ></span>
-		</p>
-		<p class="center-wrapper">Now you know the location. When finished, press Continue </p>
-		<p class="center-wrapper">Round: <span class="currentRound"></span>, Player: <span class="currentPlayer" >1</span>
-		</p>
-	</div>
-	<div data-role="footer">
-		<button class="restartBtn" data-role="button" data-inline="true" data-icon="home" data-iconpos="notext">Home</button>
-		
-		<button class="gamePlayBtn ui-btn-right">Timer</button>
-	</div>
-</div><!-- /page three -->
-
-
-<div data-role="page" id="gamePlay" data-theme="e">
-	<div data-role="header">
-		<h1>Timer</h1>
-		<button class="locationsBtn ui-btn-right">Locations</button>
-	</div>
-	<div data-role="content">
-		<div data-role="content"  data-theme="b">
-		<button data-role="button" class="startNewRoundBtn">Next Round</button>
-		</div>
-		
-		<div class="center-wrapper">
-		<span id="countdown">08:00</span>
-		<p>
-		<button id="runTimerBtn" data-role="button" data-inline="true">Start/Stop Timer</button>
-		<button id="resetTimerBtn" data-role="button" data-inline="true" data-icon="refresh">Reset</button>
-		</p>		
-		<br>
-		<p>
-		<button href="#" id="addTimerBtn" data-role="button" data-inline="true" data-icon="plus"  data-iconpos="notext">+1 minute</button>
-		<span>Minute</span>
-		<button href="#" id="subTimerBtn" data-role="button" data-inline="true" data-icon="minus"  data-iconpos="notext">-1 minute</button>
-		<br><br>
-		<button class="restartRoundBtn" data-role="button" >Restart this Round</button>
-		<button class="roundSummary" data-role="button"  data-inline="true">Summary</button>
-		<button class="audiotest" data-role="button"  data-inline="true" data-icon="audio">test Audio</button>
-		</p>
-		</div>
-	</div>
-	<div data-role="footer">
-		<button class="restartBtn" data-role="button" data-inline="true" data-icon="home" data-iconpos="notext">Home</button>
-
-		<!--button class="settingsBtn ui-btn-right" data-icon="gear" data-iconpos="notext">Settings</button-->
-	</div>
-</div><!-- /page four -->
-
-<div data-role="page" id="locations"  data-theme="c">
-	<div data-role="header">
-		<h1>Locations</h1>
-		<a href="#" data-role="button" data-icon="delete" data-rel="back">Back</a>
-	</div>
-	<div data-role="content" >
-		<ol id="locationlist" data-role="listview" data-divider-theme="d">
-		</ol>
-	</div>
-	<div data-role="footer">
-		
-	</div>
+    <head>
+        <title>
+            Spyfall
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="themes/lpt.min.css" />
+        <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+        <style>
+            .label-inline {float:left; margin-right: 10px; font-size: 1.25em;}
+            #locationVal{font-size: 2.0em;}
+            #passToPlayer{font-size: 2.0em;}
+            .currentRound{font-size: 2em;}
+            #countdown{font-size:5.5em;}
+            .center-button{
+            margin: 0 auto;
+            }
+            .center-wrapper{
+            text-align: center;
+            }
+            .center-wrapper * {
+            margin: 0 auto;
+            }
+            .settingsBtn {margin: 0.4em; float: right}
+            .footnote{font-size: 0.7em; font-weight: normal;}
+        </style>
+    </head>
+    <body>
+        <div data-role="page" id="setup">
+            <div data-role="header">
+                <h1>
+                    Spyfall
+                </h1>
+            </div>
+            <div data-role="content"  data-theme="b">
+                <button data-role="button" id="setupBtn">
+                    Play
+                </button>
+            </div>
+            <div data-role="content" data-theme="a">
+                <span>
+                    Choose number of players and press Play
+                </span>
+                <h2 class="label-inline">
+                    Players
+                </h2>
+                <select name="playerCount" id="playerCountOption" class="label-inline">
+                    <option value="3">
+                        3
+                    </option>
+                    <option value="4">
+                        4
+                    </option>
+                    <option value="5" selected>
+                        5
+                    </option>
+                    <option value="6">
+                        6
+                    </option>
+                    <option value="7">
+                        7
+                    </option>
+                    <option value="8">
+                        8
+                    </option>
+                </select>
+            </div>
+            <div data-role="footer">
+                <button class="restartBtn ui-state-disabled" data-role="button" data-inline="true" data-icon="home" data-iconpos="notext">
+                    Home
+                </button>
+                <button class="gamePlayBtn">
+                    Timer
+                </button>
+                <button class="locationsBtn ui-btn-right">
+                    Locations
+                </button>
+                <!--
+                    button class="settingsBtn ui-btn-right" data-icon="gear" data-iconpos="notext">
+                    Settings
+                </button
+            -->
+            <br/>
+            <br/>
+            <button class="settingsBtn" data-icon="gear"  data-iconpos="notext">
+                Settings
+            </button>
+            <span class="footnote">
+                <a href="http://international.hobbyworld.ru/catalog/25-spyfall/">
+                    Spyfall
+                </a>
+                is designed by Alexandr Ushan
+                <br/>
+                Published by
+                <a href="http://international.hobbyworld.ru/">
+                    Hobby World
+                </a>
+                <br/>
+                Source code at
+                <a href="https://github.com/rayjlim/spyfall">
+                    https://github.com/rayjlim/spyfall
+                </a>
+            </span>
+            <audio id="audiotag1" src="sounds/Ship_Bell.mp3" preload="auto">
+            </audio>
+        </div>
+    </div>
+    <!-- /page one -->
+    <div data-role="page" id="pass" data-theme="b">
+        <div data-role="header">
+            <h1>
+                <span class="playerCount">
+                </span>
+                Players
+            </h1>
+        </div>
+        <div data-role="content" >
+            <p class="center-wrapper">
+                Pass to
+                <span class="currentPlayer">
+                </span>
+            </p>
+            <button data-role="button" id="passBtn" data-icon="arrow-r" data-iconpos="right">
+                I am
+                <span class="currentPlayer" id="passToPlayer">
+                </span>
+            </button>
+            <p class="center-wrapper">
+                Round:
+                <span class="currentRound">
+                </span>
+            </p>
+        </div>
+        <div data-role="footer">
+            <button class="restartBtn" data-role="button" data-inline="true" data-icon="home" data-iconpos="notext">
+                Home
+            </button>
+            <button class="gamePlayBtn ui-btn-right">
+                Timer
+            </button>
+        </div>
+    </div>
+    <!-- /page two -->
+    <div data-role="page" id="clue" data-theme="b">
+        <div data-role="header">
+            <h1>
+                Clue
+            </h1>
+        </div>
+        <div data-role="content">
+            <button data-role="button" data-icon="arrow-r" data-iconpos="right" id="clueContinueBtn">
+                Continue
+            </button>
+            <p class="center-wrapper">
+                Location:
+                <span id="locationVal" >
+                </span>
+            </p>
+            <p class="center-wrapper">
+                Now you know the location. When finished, press Continue
+            </p>
+            <p class="center-wrapper">
+                Round:
+                <span class="currentRound">
+                </span>
+                , Player:
+                <span class="currentPlayer" >
+                    1
+                </span>
+            </p>
+        </div>
+        <div data-role="footer">
+            <button class="restartBtn" data-role="button" data-inline="true" data-icon="home" data-iconpos="notext">
+                Home
+            </button>
+            <button class="gamePlayBtn ui-btn-right">
+                Timer
+            </button>
+        </div>
+    </div>
+    <!-- /page three -->
+    <div data-role="page" id="gamePlay" data-theme="e">
+        <div data-role="header">
+            <h1>
+                Timer
+            </h1>
+            <button class="locationsBtn ui-btn-right">
+                Locations
+            </button>
+        </div>
+        <div data-role="content">
+            <div data-role="content"  data-theme="b">
+                <button data-role="button" class="startNewRoundBtn">
+                    Next Round
+                </button>
+            </div>
+            <div class="center-wrapper">
+                <span id="countdown">
+                    08:00
+                </span>
+                <p>
+                    <button id="runTimerBtn" data-role="button" data-inline="true">
+                        Start/Stop Timer
+                    </button>
+                    <button id="resetTimerBtn" data-role="button" data-inline="true" data-icon="refresh">
+                        Reset
+                    </button>
+                </p>
+                <br/>
+                <p>
+                    <button href="#" id="addTimerBtn" data-role="button" data-inline="true" data-icon="plus"  data-iconpos="notext">
+                        +1 minute
+                    </button>
+                    <span>
+                        Minute
+                    </span>
+                    <button href="#" id="subTimerBtn" data-role="button" data-inline="true" data-icon="minus"  data-iconpos="notext">
+                        -1 minute
+                    </button>
+                    <br/>
+                    <br/>
+                    <button class="restartRoundBtn" data-role="button" >
+                        Restart this Round
+                    </button>
+                    <button class="roundSummary" data-role="button"  data-inline="true">
+                        Summary
+                    </button>
+                    <button class="audiotest" data-role="button"  data-inline="true" data-icon="audio">
+                        test Audio
+                    </button>
+                </p>
+            </div>
+        </div>
+        <div data-role="footer">
+            <button class="restartBtn" data-role="button" data-inline="true" data-icon="home" data-iconpos="notext">
+                Home
+            </button>
+            <!--
+                button class="settingsBtn ui-btn-right" data-icon="gear" data-iconpos="notext">
+                Settings
+            </button
+        -->
+    </div>
 </div>
-
-<div data-role="page" id="settings"  data-theme="c">
-	<div data-role="header">
-		<h1>Settings</h1>
-		<a href="index.html" data-icon="delete" data-rel="back">Back</a>
-	</div>
-	<div data-role="content" >	
-		<p class="center-wrapper">
-		<button class="audiotest" data-role="button">test Audio</button>
-
-	</div>
-	<div data-role="footer">
-		Spyfall
-	</div>
+<!--
+    /page four
+-->
+<div data-role="page" id="locations"  data-theme="c">
+    <div data-role="header">
+        <h1>
+            Locations
+        </h1>
+        <a href="#" data-role="button" data-icon="delete" data-rel="back">
+            Back
+        </a>
+    </div>
+    <div data-role="content" >
+        <ol id="locationlist" data-role="listview" data-divider-theme="d">
+        </ol>
+    </div>
+    <div data-role="footer">
+    </div>
 </div>
 <div data-role="page" id="roundSummary"  data-theme="c">
-	<div data-role="header">
-		<h1>Roles Summary</h1>
-		<a href="#" data-role="button" data-icon="carat-l" data-rel="back">Back</a>
-	</div>
-	<div data-role="content" >	
-		<ul id="summaryList" data-role="listview"></ul>
-	</div>
-	<div data-role="footer">
-		&nbsp;
-	</div>
+    <div data-role="header">
+        <h1>
+            Roles Summary
+        </h1>
+        <a href="#" data-role="button" data-icon="carat-l" data-rel="back">
+            Back
+        </a>
+    </div>
+    <div data-role="content" >
+        <ul id="summaryList" data-role="listview">
+        </ul>
+    </div>
+    <div data-role="footer">
+        &nbsp;
+    </div>
+</div>
+<div data-role="page" id="settings"  data-theme="c">
+    <div data-role="header">
+        <h1>
+            Settings
+        </h1>
+        <a href="index.html" data-icon="carat-l" data-rel="back">
+            Back
+        </a>
+    </div>
+    <div data-role="content" >
+        <fieldset data-role="controlgroup">
+            <legend>
+                Setting:
+            </legend>
+            <label for="useSpyGetsLocation">
+                Spy Gets Random Location
+            </label>
+            <input type="checkbox" name="useSpyGetsLocation" id="useSpyGetsLocation"/>
+            <label for="useBasicSet">
+                Basic Set
+            </label>
+            <input type="checkbox" name="useBasicSet" id="useBasicSet"/>
+            <label for="useSeconarySet">
+                Secondary Set
+            </label>
+            <input type="checkbox" name="useSeconarySet" id="useSeconarySet"/>
+            <label for="useTopicSet">
+                Things Set
+            </label>
+            <input type="checkbox" name="useTopicSet" id="useTopicSet"/>
+        </fieldset>
+        <button id="saveSettingsBtn" data-role="button" class="ui-btn-b">
+            Save
+        </button>
+    </div>
+    <div data-role="footer">
+        Spyfall
+    </div>
 </div>
 </body>
 </html>
-
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="lib/SpyGame.js"></script>
-<script src="lib/SpyController.js"></script>
-<script src="lib/Timer.js"></script>
-    
+<script src="//code.jquery.com/jquery-1.11.2.min.js">
+</script>
+<script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js">
+</script>
+<script src="lib/SpyGame.js">
+</script>
+<script src="lib/SpyController.js">
+</script>
+<script src="lib/Timer.js">
+</script>
 <script>
-var game = spy.Game();
-var controller = lpt.SpyController(game);
-
-$('.restartBtn').on('click',   controller.showStart);
-$('#setupBtn').on('click',     controller.setupGame);
-$('.locationsBtn').on('click', controller.showLocations);
-$('.gamePlayBtn').on('click',  controller.showGamePlay);
-
-$('#passBtn').on('click',          controller.showPlayersRole);
-$('#clueContinueBtn').on('click',  controller.doneShowingRole);
-$('.startNewRoundBtn').on('click',       controller.startNewRound);
-$('.restartRoundBtn').on('click',       controller.restartRound);
-$('.roundSummary').on('click',       controller.roundSummary);
-
-// $('.settingsBtn').on('click', SpyfallController.showSettings);
-// $('#saveSettingsBtn').on('click', SpyfallController.saveSettings);
-
+$('.restartBtn').on('click',   Controller.showStart);
+$('#setupBtn').on('click',     Controller.setupGame);
+$('.locationsBtn').on('click', Controller.showLocations);
+$('.gamePlayBtn').on('click',  Controller.showGamePlay);
+$('.settingsBtn').on('click', 	  Controller.showSettings);
+$('#saveSettingsBtn').on('click', Controller.saveSettings);
+$('#passBtn').on('click',          Controller.showPlayersRole);
+$('#clueContinueBtn').on('click',  Controller.doneShowingRole);
+$('.startNewRoundBtn').on('click',       Controller.startNewRound);
+$('.restartRoundBtn').on('click',       Controller.restartRound);
+$('.roundSummary').on('click',       Controller.roundSummary);
 var timer = countdown.Timer('countdown', 'audiotag1');
 $('#runTimerBtn').on('click', timer.run);
 $('#resetTimerBtn').on('click', timer.reset);
 $('#addTimerBtn').on('click', timer.addOne);
 $('#subTimerBtn').on('click', timer.subOne);
 $('.audiotest').on('click', timer.playAudio);
-
-$(document).bind('pageinit', controller.pageCheck);
-
+$(document).bind('pageinit', Controller.pageCheck);
 </script>
