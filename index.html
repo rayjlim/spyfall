@@ -77,11 +77,6 @@
                 <button class="locationsBtn ui-btn-right">
                     Locations
                 </button>
-                <!--
-                    button class="settingsBtn ui-btn-right" data-icon="gear" data-iconpos="notext">
-                    Settings
-                </button
-            -->
             <br/>
             <br/>
             <button class="settingsBtn" data-icon="gear"  data-iconpos="notext">
@@ -102,6 +97,7 @@
                 <a href="https://github.com/rayjlim/spyfall">
                     https://github.com/rayjlim/spyfall
                 </a>
+                <span>v. 1.0</span>
             </span>
             <audio id="audiotag1" src="sounds/Ship_Bell.mp3" preload="auto">
             </audio>
@@ -298,18 +294,9 @@
                 Spy Gets Random Location
             </label>
             <input type="checkbox" name="useSpyGetsLocation" id="useSpyGetsLocation"/>
-            <label for="useBasicSet">
-                Basic Set
-            </label>
-            <input type="checkbox" name="useBasicSet" id="useBasicSet"/>
-            <label for="useSeconarySet">
-                Secondary Set
-            </label>
-            <input type="checkbox" name="useSeconarySet" id="useSeconarySet"/>
-            <label for="useTopicSet">
-                Things Set
-            </label>
-            <input type="checkbox" name="useTopicSet" id="useTopicSet"/>
+        </fieldset>
+        <fieldset data-role="controlgroup" id="setInputs">
+          
         </fieldset>
         <button id="saveSettingsBtn" data-role="button" class="ui-btn-b">
             Save
@@ -332,22 +319,22 @@
 <script src="lib/Timer.js">
 </script>
 <script>
-$('.restartBtn').on('click',   Controller.showStart);
-$('#setupBtn').on('click',     Controller.setupGame);
-$('.locationsBtn').on('click', Controller.showLocations);
-$('.gamePlayBtn').on('click',  Controller.showGamePlay);
-$('.settingsBtn').on('click', 	  Controller.showSettings);
-$('#saveSettingsBtn').on('click', Controller.saveSettings);
-$('#passBtn').on('click',          Controller.showPlayersRole);
-$('#clueContinueBtn').on('click',  Controller.doneShowingRole);
-$('.startNewRoundBtn').on('click',       Controller.startNewRound);
-$('.restartRoundBtn').on('click',       Controller.restartRound);
-$('.roundSummary').on('click',       Controller.roundSummary);
-var timer = countdown.Timer('countdown', 'audiotag1');
-$('#runTimerBtn').on('click', timer.run);
-$('#resetTimerBtn').on('click', timer.reset);
-$('#addTimerBtn').on('click', timer.addOne);
-$('#subTimerBtn').on('click', timer.subOne);
-$('.audiotest').on('click', timer.playAudio);
-$(document).bind('pageinit', Controller.pageCheck);
+    $('.restartBtn').on('click',   Controller.showStart);
+    $('#setupBtn').on('click',     Controller.setupGame);
+    $('.locationsBtn').on('click', Controller.showLocations);
+    $('.gamePlayBtn').on('click',  Controller.showGamePlay);
+    $('.settingsBtn').on('click', 	  Controller.showSettings);
+    $('#saveSettingsBtn').on('click', Controller.saveSettings);
+    $('#passBtn').on('click',          Controller.showPlayersRole);
+    $('#clueContinueBtn').on('click',  Controller.doneShowingRole);
+    $('.startNewRoundBtn').on('click',       Controller.startNewRound);
+    $('.restartRoundBtn').on('click',       Controller.restartRound);
+    $('.roundSummary').on('click',       Controller.roundSummary);
+    let timer = countdown.Timer('countdown', 'audiotag1');
+    $('#runTimerBtn').on('click', timer.run);
+    $('#resetTimerBtn').on('click', timer.reset);
+    $('#addTimerBtn').on('click', timer.addOne);
+    $('#subTimerBtn').on('click', timer.subOne);
+    $('.audiotest').on('click', timer.playAudio);
+    $(document).bind('pageinit', Controller.pageCheck);
 </script>
