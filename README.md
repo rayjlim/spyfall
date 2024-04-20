@@ -3,7 +3,7 @@ Spyfall
 
 Another implementation of the game. The focus was on making a mobile accessible version.
 
-Try it out : [http://lilplaytime.com/spyfall/](http://lilplaytime.com/spyfall/)
+Try it out : [http://lilplaytime.com/spyfall/](https://qty.pot.mybluehost.me/sites/spyfall/)
 
 This project grew out wanting to experiment with new technologies. 
 jQuery mobile, mocha, chai, testem, etc.
